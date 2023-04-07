@@ -1,67 +1,12 @@
-﻿// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+﻿
+// Задача 54. Упорядочить по убыванию элемент каждой строки двухмерного массива.
 
-// void FillArray( int [,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//       for (int j = 0; j < array.GetLength(1); j++)
-//          array[i,j] = new Random().Next(1,10); 
-// }
-// void PrintArray( int [,] array)
-// {
-//     for ( int i = 0; i< array.GetLength(0); i++)
-//     {
-//     for (int j = 0; j < array.GetLength(1); j++)
-//     Console.Write($"{array[i,j],3}\t");
-//     Console.WriteLine();
-//     }
-   
-// }
-
-// void Sum(int[,] array)
-// { 
-//     for (int j = 0; j < array.GetLength(1); j++)
-//     {
-//         double sum =0 ;
-//         for ( int i = 0; i< array.GetLength(0); i++)
-//         {
-//             sum+= array[i,j];
-//         }
-//         Console.Write($"{ sum / array.GetLength(0),3} ;");
-//     }
-    
-
-// }
-    
-
-// int [,] array = new int [4,4];
+// int[,] array = new int[3, 4];
 // FillArray(array);
 // PrintArray(array);
-// Console.WriteLine("Среднее арифметическое элементов в каждом столбце равно:");
-// Sum(array);
-
-// -----------------------------------------------------------------
-
-
-// Задача 50. Напишите программу, которая на вход принимает значение элемента в двумерном массиве, и возвращает позицию этого элемента или же указание, что такого элемента нет.
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// 17 -> такого числа в массиве нет
-// int rows = ReadInt("Введите индекс строки: ");
-// int colums = ReadInt("Введите индекс столбца: ");
-// int[,] numbers = new int[3, 3];
-// FillArray(numbers);
-// PrintArray(numbers);
-
-// if (rows < numbers.GetLength(0) && colums < numbers.GetLength(1)) Console.WriteLine(numbers[rows, colums]);
-// else Console.WriteLine($"{rows} -> такого числа в массиве нет");
-
+// Sort(array);
+// Console.WriteLine();
+// PrintArray(array);
 
 
 // void FillArray(int[,] array)
@@ -76,22 +21,109 @@
 // }
 
 
+// void Sort(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < array.GetLength(1); j++)
+//         {
+//             for (int m = 0; m < array.GetLength(1) - 1; m++)
+//             {
+//                 if (array[i, m] < array[i, m + 1])
+//                 {
+//                     int temp = array[i, m + 1];
+//                     array[i, m + 1] = array[i, m];
+//                     array[i, m] = temp;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
 // void PrintArray(int[,] array)
 // {
 //     for (int i = 0; i < array.GetLength(0); i++)
 //     {
 //         for (int j = 0; j < array.GetLength(1); j++)
 //         {
-//             Console.Write(array[i, j] + " ");
+//             Console.Write($"{array[i, j]} ");
 //         }
 //         Console.WriteLine();
 //     }
-//     Console.WriteLine();
 // }
 
 
-// int ReadInt(string message)
+
+
+
+// Задача 56. Прямоугольный массив. Найти строку с наименьшей суммой элементов.
+
+
+// Console.WriteLine("Введите размер массива m x n и диапазон случайных значений:");
+// int m = InputNumbers("Введите m ");
+// int n = InputNumbers("Введите n ");
+
+
+// int[,] array = new int[m, n];
+// FillArray(array);
+// PrintArray(array);
+
+// int minSum = 0;
+// int sum = SumElements(array, 0);
+// for (int i = 1; i < array.GetLength(0); i++)
 // {
-//     Console.Write(message);
-//     return Convert.ToInt32(Console.ReadLine());
+//   int tempSum = SumElements(array, i);
+//   if (sum > tempSum)
+//   {
+//     sum = tempSum;
+//     minSum = i;
+//   }
 // }
+
+// Console.WriteLine($"\n{minSum+1} - строкa с наименьшей суммой ({sum}) элементов ");
+
+
+// int SumElements(int[,] array, int i)
+// {
+//   int sum = array[i,0];
+//   for (int j = 1; j < array.GetLength(1); j++)
+//   {
+//     sum += array[i,j];
+//   }
+//   return sum;
+// }
+
+// int InputNumbers(string input)
+// {
+//   Console.Write(input);
+//   int output = Convert.ToInt32(Console.ReadLine());
+//   return output;
+// }
+
+// void FillArray(int[,] array)
+// {
+//   for (int i = 0; i < array.GetLength(0); i++)
+//   {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//       array[i, j] = new Random().Next(1,10);
+//     }
+//   }
+// }
+
+// void PrintArray (int[,] array)
+// {
+//   for (int i = 0; i < array.GetLength(0); i++)
+//   {
+//     for (int j = 0; j < array.GetLength(1); j++)
+//     {
+//       Console.Write(array[i,j] + " ");
+//     }
+//     Console.WriteLine();
+//   }
+// }
+
+
+
+
