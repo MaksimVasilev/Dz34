@@ -1,204 +1,57 @@
-﻿
-// Задача 54. Упорядочить по убыванию элемент каждой строки двухмерного массива.
-
-// int[,] array = new int[3, 4];
-// FillArray(array);
-// PrintArray(array);
-// Sort(array);
-// Console.WriteLine();
-// PrintArray(array);
+﻿// Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+// Console.WriteLine("Введите натуральное число");
+// int i = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine(NumberCounter(i));
 
 
-// void FillArray(int[,] array)
+
+
+// string NumberCounter (int i)
 // {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             array[i, j] = new Random().Next(1, 10);
-//         }
-//     }
+//     if (i == 1) return Convert.ToString("" + i);
+//     return i + "," + NumberCounter (i - 1);   
 // }
 
+// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
 
-// void Sort(int[,] array)
+// Console.WriteLine("Ввудите значение M");
+// int m = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Ввудите значение N");
+// int n = Convert.ToInt32(Console.ReadLine());
+// if(m<n)
+// Console.WriteLine(PrintNum(m , n));
+// if(m>n)
+// Console.WriteLine(PrintNum1(m , n));
+
+
+
+
+// int PrintNum(int m, int n)
 // {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             for (int m = 0; m < array.GetLength(1) - 1; m++)
-//             {
-//                 if (array[i, m] < array[i, m + 1])
-//                 {
-//                     int temp = array[i, m + 1];
-//                     array[i, m + 1] = array[i, m];
-//                     array[i, m] = temp;
-//                 }
-//             }
-//         }
-//     }
+//     if(m==n) return m;
+//     return m + PrintNum(m + 1, n);
+// }
+// int PrintNum1(int m, int n)
+// {
+//     if(m==n) return m;
+//     return m + PrintNum(m - 1, n);
 // }
 
+// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
 
-// void PrintArray(int[,] array)
+// Console.WriteLine("Ввудите значение M");
+// int m = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine("Ввудите значение N");
+// int n = Convert.ToInt32(Console.ReadLine());
+// Console.WriteLine(AkkermanRec( m, n));
+
+// int AkkermanRec( int m, int n)
 // {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             Console.Write($"{array[i, j]} ");
-//         }
-//         Console.WriteLine();
-//     }
+//     if ( m==0 ) return n + 1;
+//     else if (n==0) return AkkermanRec( m-1, 1 );
+//     else return AkkermanRec( m-1, AkkermanRec( m , n-1 ));
 // }
-
-
-
-
-
-// Задача 56. Прямоугольный массив. Найти строку с наименьшей суммой элементов.
-
-
-// Console.WriteLine("Введите размер массива m x n и диапазон случайных значений:");
-// int m = InputNumbers("Введите m ");
-// int n = InputNumbers("Введите n ");
-
-
-// int[,] array = new int[m, n];
-// FillArray(array);
-// PrintArray(array);
-
-// int minSum = 0;
-// int sum = SumElements(array, 0);
-// for (int i = 1; i < array.GetLength(0); i++)
-// {
-//   int tempSum = SumElements(array, i);
-//   if (sum > tempSum)
-//   {
-//     sum = tempSum;
-//     minSum = i;
-//   }
-// }
-
-// Console.WriteLine($"\n{minSum+1} - строкa с наименьшей суммой ({sum}) элементов ");
-
-
-// int SumElements(int[,] array, int i)
-// {
-//   int sum = array[i,0];
-//   for (int j = 1; j < array.GetLength(1); j++)
-//   {
-//     sum += array[i,j];
-//   }
-//   return sum;
-// }
-
-// int InputNumbers(string input)
-// {
-//   Console.Write(input);
-//   int output = Convert.ToInt32(Console.ReadLine());
-//   return output;
-// }
-
-// void FillArray(int[,] array)
-// {
-//   for (int i = 0; i < array.GetLength(0); i++)
-//   {
-//     for (int j = 0; j < array.GetLength(1); j++)
-//     {
-//       array[i, j] = new Random().Next(1,10);
-//     }
-//   }
-// }
-
-// void PrintArray (int[,] array)
-// {
-//   for (int i = 0; i < array.GetLength(0); i++)
-//   {
-//     for (int j = 0; j < array.GetLength(1); j++)
-//     {
-//       Console.Write(array[i,j] + " ");
-//     }
-//     Console.WriteLine();
-//   }
-// }
-
-// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
-// Например, даны 2 матрицы:
-// 2 4 | 3 4
-// 3 2 | 3 3
-// Результирующая матрица будет:
-// 18 20
-// 15 18
-
-// int rows = ReadInt("Введите количество строк: ");
-// int columns = ReadInt("Введите количество столбцов: ");
-// int[,] array = new int[rows, columns];
-// int[,] secondArray = new int[rows, columns];
-// int[,] resultArray = new int[rows, columns];
-
-// FillArray(array);
-// PrintArray(array);
-
-// Console.WriteLine();
-
-// FillArray(secondArray);
-// PrintArray(secondArray);
-
-// Console.WriteLine();
-
-// if (array.GetLength(0) != secondArray.GetLength(1))
-// {
-//     Console.WriteLine(" ОШИБКА ");
-//     return;
-// }
-// for (int i = 0; i < array.GetLength(0); i++)
-// {
-//     for (int j = 0; j < secondArray.GetLength(1); j++)
-//     {
-//         resultArray[i, j] = 0;
-//         for (int k = 0; k < array.GetLength(1); k++)
-//         {
-//             resultArray[i, j] += array[i, k] * secondArray[k, j];
-//         }
-//     }
-// }
-
-// PrintArray(resultArray);
-
-
-
-// // Функция ввода
-// int ReadInt(string message)
-// {
-//     Console.Write(message);
-//     return Convert.ToInt32(Console.ReadLine());
-// }
-
-
-// void FillArray(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             array[i, j] = new Random().Next(1, 10);
-//         }
-//     }
-// }
-
-
-// void PrintArray(int[,] array)
-// {
-//     for (int i = 0; i < array.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < array.GetLength(1); j++)
-//         {
-//             Console.Write($"{array[i, j]} ");
-//         }
-//         Console.WriteLine();
-//     }
-// }
-
-
